@@ -57,11 +57,12 @@ public class Main {
                         System.out.printf("Получен запрос на вычисление от клиента %d: \n", valueForCalculate);
                         //  отправляем сообщение клиента назад с пометкой ЭХО
                         final long fibonacci = calculateFibonacci(valueForCalculate);
+                        System.out.printf("Отправляем результат клиенту %d: \n", fibonacci);
                         //final long fibonacci = 6L;
-                        //final ByteBuffer buffer = outputBuffer.putLong(fibonacci);
-                        //socketChannel.write(buffer);
-                        final String result = String.format("Результат по Фибоначчи: %d", calculateFibonacci(valueForCalculate));
-                        socketChannel.write(ByteBuffer.wrap((result).getBytes(StandardCharsets.UTF_8)));
+                        final ByteBuffer buffer = outputBuffer.putLong(fibonacci);
+                        socketChannel.write(buffer);
+                        //final String result = String.format("Результат по Фибоначчи: %d", calculateFibonacci(valueForCalculate));
+                        //socketChannel.write(ByteBuffer.wrap((result).getBytes(StandardCharsets.UTF_8)));
 
                     }
                 }
